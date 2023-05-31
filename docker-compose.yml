@@ -1,0 +1,7 @@
+version: '3'
+services:  
+  node-api-mongo:
+    image: dsahoo165/node_api_mongo:1.0
+    restart: always # fixes when there is some api error
+    ports:
+      - 8081:8081
