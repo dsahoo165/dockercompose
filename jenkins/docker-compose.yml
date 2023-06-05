@@ -2,6 +2,7 @@ version: '3.7'
 services:
   jenkins:
     image: jenkins/jenkins:lts
+    restart: always # automatically keeps it on when docker starts
     privileged: true
     user: root
     ports:
