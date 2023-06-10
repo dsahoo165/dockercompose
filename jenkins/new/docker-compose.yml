@@ -1,31 +1,12 @@
 version: '3.3'
-
 services:
-  docker-in-docker-container:
-    image: docker:dind
-    container_name: docker-in-docker-container
-    user: root
-    privileged: true
-    expose:
-      - 2375
-    volumes:
-      - ./data:/var/jenkins_home
-    environment:
-      DOCKER_TLS_CERTDIR: ""
-    restart: on-failure
-
   jenkins-container: 
-    image: jenkins/jenkins:lts-jdk17
+    image: mirekphd/jenkins-jdk17-on-ubuntu2204
     container_name: jenkins-container
-    user: root
-    depends_on:
-      - docker-in-docker-container
+    user: root   
     ports:
       - '80:8080'
     privileged: true
     volumes:
       - ./data:/var/jenkins_home
-      - /usr/bin/docker:/usr/bin/docker
-    environment:
-      DOCKER_HOST: tcp://docker-in-docker-container:2375
     restart: on-failure
