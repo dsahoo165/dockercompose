@@ -9,4 +9,5 @@ services:
     privileged: true
     volumes:
       - ./data:/var/jenkins_home
+      - /usr/bin/docker:/usr/bin/docker
     restart: on-failure
