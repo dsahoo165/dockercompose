@@ -9,7 +9,7 @@ services:
     expose:
       - 2375
     volumes:
-      - ~/jenkins_home:/var/jenkins_home
+      - ./data:/var/jenkins_home
     environment:
       DOCKER_TLS_CERTDIR: ""
     restart: on-failure
@@ -24,7 +24,7 @@ services:
       - '80:8080'
     privileged: true
     volumes:
-      - ~/jenkins_home:/var/jenkins_home
+      - ./data:/var/jenkins_home
       - /usr/bin/docker:/usr/bin/docker
     environment:
       DOCKER_HOST: tcp://docker-in-docker-container:2375
